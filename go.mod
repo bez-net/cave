@@ -1,4 +1,4 @@
-module golang-mongodb-restful-starter-kit
+module cave
 
 go 1.14
 

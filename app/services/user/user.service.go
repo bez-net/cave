@@ -1,13 +1,13 @@
 package user
 
 import (
+	"cave/utility"
 	"context"
-	"golang-mongodb-restful-starter-kit/utility"
 
-	model "golang-mongodb-restful-starter-kit/app/models"
-	"golang-mongodb-restful-starter-kit/config"
+	model "cave/app/models"
+	"cave/config"
 
-	repository "golang-mongodb-restful-starter-kit/app/repositories/user"
+	repository "cave/app/repositories/user"
 
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"

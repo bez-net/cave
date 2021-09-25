@@ -1,12 +1,12 @@
 package handlers
 
 import (
+	"cave/app/models"
+	"cave/app/services/auth"
+	"cave/app/services/jwt"
+	"cave/config"
+	"cave/utility"
 	"encoding/json"
-	"golang-mongodb-restful-starter-kit/app/models"
-	"golang-mongodb-restful-starter-kit/app/services/auth"
-	"golang-mongodb-restful-starter-kit/app/services/jwt"
-	"golang-mongodb-restful-starter-kit/config"
-	"golang-mongodb-restful-starter-kit/utility"
 	"log"
 	"net/http"
 )

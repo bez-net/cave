@@ -1,7 +1,7 @@
 package db
 
 import (
-	"golang-mongodb-restful-starter-kit/config"
+	"cave/config"
 
 	mgo "gopkg.in/mgo.v2"
 )

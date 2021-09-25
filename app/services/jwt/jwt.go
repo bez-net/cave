@@ -1,8 +1,8 @@
 package jwt
 
 import (
-	"golang-mongodb-restful-starter-kit/config"
-	"golang-mongodb-restful-starter-kit/utility"
+	"cave/config"
+	"cave/utility"
 	"log"
 	"net/http"
 	"strings"

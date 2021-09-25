@@ -1,13 +1,13 @@
 package main
 
 import (
-	"golang-mongodb-restful-starter-kit/app/middleware"
-	"golang-mongodb-restful-starter-kit/app/services/jwt"
-	"golang-mongodb-restful-starter-kit/config"
-	"golang-mongodb-restful-starter-kit/db"
-	_ "golang-mongodb-restful-starter-kit/docs"
-	"golang-mongodb-restful-starter-kit/routes"
-	"golang-mongodb-restful-starter-kit/utility"
+	"cave/app/middleware"
+	"cave/app/services/jwt"
+	"cave/config"
+	"cave/db"
+	_ "cave/docs"
+	"cave/routes"
+	"cave/utility"
 
 	httpSwagger "github.com/swaggo/http-swagger"
 

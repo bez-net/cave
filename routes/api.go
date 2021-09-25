@@ -1,11 +1,11 @@
 package routes
 
 import (
-	api "golang-mongodb-restful-starter-kit/app/handlers"
-	userRepo "golang-mongodb-restful-starter-kit/app/repositories/user"
-	authSrv "golang-mongodb-restful-starter-kit/app/services/auth"
-	userSrv "golang-mongodb-restful-starter-kit/app/services/user"
-	"golang-mongodb-restful-starter-kit/config"
+	api "cave/app/handlers"
+	userRepo "cave/app/repositories/user"
+	authSrv "cave/app/services/auth"
+	userSrv "cave/app/services/user"
+	"cave/config"
 	"net/http"
 
 	"github.com/gorilla/mux"

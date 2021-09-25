@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 
-	model "golang-mongodb-restful-starter-kit/app/models"
-	"golang-mongodb-restful-starter-kit/config"
+	model "cave/app/models"
+	"cave/config"
 
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"

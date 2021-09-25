@@ -3,9 +3,9 @@ package auth
 import (
 	"context"
 
-	model "golang-mongodb-restful-starter-kit/app/models"
+	model "cave/app/models"
 
-	repository "golang-mongodb-restful-starter-kit/app/repositories/user"
+	repository "cave/app/repositories/user"
 
 	"gopkg.in/mgo.v2/bson"
 )
