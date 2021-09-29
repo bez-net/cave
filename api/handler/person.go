@@ -2,6 +2,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -27,7 +28,7 @@ func CreatePerson(db *mongo.Database, res http.ResponseWriter, req *http.Request
 		ResponseWriter(res, http.StatusBadRequest, "body json request have issues!!!", nil)
 		return
 	}
-	result, err := db.Collection("people").InsertOne(nil, person)
+	result, err := db.Collection("people").InsertOne(context.TODO(), person)
 	if err != nil {
 		switch err.(type) {
 		case mongo.WriteException:
@@ -39,6 +40,7 @@ func CreatePerson(db *mongo.Database, res http.ResponseWriter, req *http.Request
 	}
 	person.ID = result.InsertedID.(primitive.ObjectID)
 	ResponseWriter(res, http.StatusCreated, "", person)
+	fmt.Printf("Received Payload: %+v\n", person)
 }
 
 // GetPersons will handle people list get request
@@ -57,7 +59,7 @@ func GetPersons(db *mongo.Database, res http.ResponseWriter, req *http.Request) 
 			"_id": -1, // -1 for descending and 1 for ascending
 		},
 	}
-	curser, err := db.Collection("people").Find(nil, bson.M{}, &findOptions)
+	curser, err := db.Collection("people").Find(context.TODO(), bson.M{}, &findOptions)
 	if err != nil {
 		log.Printf("Error while quering collection: %v\n", err)
 		ResponseWriter(res, http.StatusInternalServerError, "Error happend while reading data", nil)
@@ -70,6 +72,7 @@ func GetPersons(db *mongo.Database, res http.ResponseWriter, req *http.Request) 
 		return
 	}
 	ResponseWriter(res, http.StatusOK, "", personList)
+	fmt.Printf("Received Payload: %+v\n", personList)
 }
 
 // GetPerson will give us person with special id
@@ -81,7 +84,7 @@ func GetPerson(db *mongo.Database, res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var person model.Person
-	err = db.Collection("people").FindOne(nil, model.Person{ID: id}).Decode(&person)
+	err = db.Collection("people").FindOne(context.TODO(), model.Person{ID: id}).Decode(&person)
 	if err != nil {
 		switch err {
 		case mongo.ErrNoDocuments:
@@ -93,6 +96,7 @@ func GetPerson(db *mongo.Database, res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	ResponseWriter(res, http.StatusOK, "", person)
+	fmt.Printf("Received Payload: %+v\n", person)	
 }
 
 // UpdatePerson will handle the person update endpoint
@@ -121,6 +125,7 @@ func UpdatePerson(db *mongo.Database, res http.ResponseWriter, req *http.Request
 	}
 	if result.MatchedCount == 1 {
 		ResponseWriter(res, http.StatusAccepted, "", &updateData)
+		fmt.Printf("Received Payload: %+v\n", &updateData)
 	} else {
 		ResponseWriter(res, http.StatusNotFound, "person not found", nil)
 	}
