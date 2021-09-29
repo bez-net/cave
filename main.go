@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"cave/api"
 	"cave/config"
@@ -10,6 +11,11 @@ import (
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	config := config.NewConfig()
+	dirname, err := os.UserHomeDir()
+    if err != nil {
+        log.Fatal( err )
+    }
+
+	config := config.NewConfig(dirname + "/cave/.env")
 	api.ConfigAndRunApp(config)
 }
