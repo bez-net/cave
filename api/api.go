@@ -2,6 +2,7 @@ package api
 
 import (
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -11,6 +12,7 @@ import (
 	"cave/api/handler"
 	"cave/config"
 
+	"github.com/fasthttp/router"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/x/bsonx"
@@ -21,6 +23,23 @@ import (
 type Api struct {
 	Router *mux.Router
 	DB     *mongo.Database
+}
+
+
+const (
+	AcceptJson  = "application/json"
+	AcceptRest  = "application/vnd.pgrst.object+json"
+	ContentText = "text/plain; charset=utf8"
+	ContentRest = "application/vnd.pgrst.object+json; charset=utf-8"
+	ContentJson = "application/json; charset=utf-8"
+)
+
+type webServer struct {
+	Config config.Configuration
+	Addr   string
+	ln     net.Listener
+	router *router.Router
+	debug  bool
 }
 
 // ConfigAndRunApp will create and initialize Api structure. Api factory function.
@@ -59,7 +78,6 @@ func (api *Api) UseMiddleware(middleware mux.MiddlewareFunc) {
 func (api *Api) createIndexes() {
 	// username and email will be unique.
 	keys := bsonx.Doc{
-		{Key: "username", Value: bsonx.Int32(1)},
 		{Key: "email", Value: bsonx.Int32(1)},
 	}
 	people := api.DB.Collection("people")
