@@ -14,46 +14,30 @@ Cave is a golang restful api and a video/audio streaming server for the Adullam 
   
 ### Project structure
 ```bash
-.
-├── README.md
-├── app
-│   ├── handlers                  // API controllers / handlers
-│   │   ├── auth.handler.go
-│   │   ├── model.handler.go
-│   │   └── user.handler.go
-│   ├── middleware                // API middleware
-│   │   └── cors.go
-│   ├── models                    // DB models
-│   │   └── user.model.go
-│   ├── repositories              // DB repository
-│   │   └── user
-│   │       └── user.repository.go  // UseRepository
-│   └── services                    // Services
-│       ├── auth
-│       │   └── auth.service.go
-│       ├── jwt
-│       │   └── jwt.go
-│       └── user
-│           └── user.service.go
+cave
+├── api
+│   ├── api.go
+│   ├── db
+│   │   ├── connection.go
+│   │   └── indexes.go
+│   ├── handler
+│   │   ├── middleware.go
+│   │   ├── person.go
+│   │   ├── person_test.go
+│   │   └── response_writer.go
+│   └── model
+│       ├── person.go
+│       └── response.go
 ├── config
-│   └── config.go                 // Environment configurations, read from .env file
-├── db
-│   └── mongo.go                  // Mongodb Connection and Session
-├── docs                          // Swagger docs
-│   ├── docs.go
-│   ├── swagger.json
-│   └── swagger.yaml
-├── go.mod                      // Go modules
+│   └── config.go
+├── docker-compose.yml
+├── dockerfile
+├── go.mod
 ├── go.sum
+├── LICENSE
 ├── main.go
-├── routes      // API routes
-│   └── api.go
-└── utility   //  Contains helpers, basic operations, commons operations, errors, validations                     
-    ├── common.go
-    ├── errors.go
-    ├── handler.go
-    ├── role.go
-    └── string.go
+├── README.md
+└── swagger.json
 ```
   
 ### Installation
@@ -86,7 +70,6 @@ Project uses a number of open source projects to work properly:
 * [Go] - Awesome programing language by Google
 * [mux] - Implements a request router and dispatcher in Go
 * [MongoDB] - document-based, big community, database
-* [Redis] - in-memory database using key-value pairs
 * [Docker] - Build, Share, and Run Any App, Anywhere
 * [Kubernetes] - Automating deployment, scaling, and management of containerized applications
 
