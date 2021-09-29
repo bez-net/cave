@@ -13,8 +13,8 @@ import (
 type Configuration struct {
 	Address               string `env:"ADDRESS" envDefault:":8080"`
 	JwtSecret             string `env:"JWT_SECRET,required"`
-	DataBaseConnectionURL string `env:"CONNECTION_URL,required"`
-	DataBaseName          string `env:"DATABASE_NAME,required"`
+	MongoURL string `env:"CONNECTION_URL,required"`
+	DBName          string `env:"DATABASE_NAME,required"`
 }
 
 // NewConfig will read the config data from given .env file
