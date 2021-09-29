@@ -83,4 +83,3 @@ Swagger endpoint - http://localhost:8080/swagger/index.html
    [MongoDB]: <https://www.mongodb.com/>
    [Docker]: <https://www.docker.com/>
    [Kubernetes]: <https://kubernetes.io/>
-   [Redis]: <https://redis.io/>
