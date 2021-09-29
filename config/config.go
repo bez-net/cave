@@ -22,6 +22,7 @@ func NewConfig(files ...string) *Configuration {
 	err := godotenv.Load(files...) // Loading config from env file
 
 	if err != nil {
+		log.Printf("Home Dir: %v\n", files)
 		log.Printf("No .env file could be found %q\n", files)
 	}
 

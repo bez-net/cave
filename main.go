@@ -15,7 +15,6 @@ func main() {
     if err != nil {
         log.Fatal( err )
     }
-	log.Printf("Home Dir: %v\n", dirname + "/cave/.env")
 
 	config := config.NewConfig(dirname + "/cave/.env")
 	api.ConfigAndRunApp(config)
