@@ -13,7 +13,7 @@ func main() {
 
 	dirname, err := os.UserHomeDir()
     if err != nil {
-        log.Fatal( err )
+        log.Printf( "ERROR Dirname: %v\n", err )
     }
 
 	config := config.NewConfig(dirname + "/cave/.env")
